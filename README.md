@@ -30,19 +30,19 @@ var Map = require('es6-map');
 
 var x = {}, y = {}, map = new Map([['raz', 'one'], ['dwa', 'two'], [x, y]]);
 
-map.size;          // 3
-map.get('raz');    // 'one'
-map.get(x);        // y
-map.has('raz');    // true
-map.has(x);        // true
-map.has('foo');    // false
+map.size;                 // 3
+map.get('raz');           // 'one'
+map.get(x);               // y
+map.has('raz');           // true
+map.has(x);               // true
+map.has('foo');           // false
 map.set('trzy', 'three'); // map
-map.size           // 4
-map.get('trzy');    // 'three'
-map.has('trzy');    // true
-map.has('dwa');    // true
-map.delete('dwa'); // true
-map.size;          // 3
+map.size                  // 4
+map.get('trzy');          // 'three'
+map.has('trzy');          // true
+map.has('dwa');           // true
+map.delete('dwa');        // true
+map.size;                 // 3
 
 map.forEach(function (value, key) {
   // { 'raz', 'one' }, { x, y }, { 'trzy', 'three' } iterated
