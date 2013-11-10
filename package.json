@@ -22,7 +22,11 @@
     "test": "node ./node_modules/tad/bin/tad"
   },
   "dependencies": {
-    "es5-ext": "git://github.com/medikoo/es5-ext.git"
+    "d": "git://github.com/medikoo/d.git",
+    "es5-ext": "git://github.com/medikoo/es5-ext.git",
+    "es6-iterator": "git://github.com/medikoo/es6-iterator.git",
+    "es6-set": "git://github.com/medikoo/es6-set.git",
+    "event-emitter": "git://github.com/medikoo/event-emitter.git"
   },
   "devDependencies": {
     "tad": "~0.1.20"
