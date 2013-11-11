@@ -32,5 +32,6 @@ MapIterator.prototype = Object.create(Iterator.prototype, {
 		this.__values__ = null;
 		unBind.call(this);
 	}),
+	'@@toStringTag': d('c', 'Map Iterator'),
 	toString: d(function () { return '[object Map Iterator]'; })
 });

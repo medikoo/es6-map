@@ -40,6 +40,7 @@ PrimitiveMapIterator.prototype = Object.create(Iterator.prototype, assign({
 		this.__valuesData__ = null;
 		unBind.call(this);
 	}),
+	'@@toStringTag': d('c', 'Map Iterator'),
 	toString: d(function () { return '[object Map Iterator]'; })
 }, autoBind({
 	_onAdd: d(function (key) { this.__list__.push(key); }),
