@@ -66,10 +66,11 @@ ee(defineProperties(MapPoly.prototype, {
 		var thisArg = arguments[1], iterator, result;
 		callable(cb);
 		iterator = this.entries();
-		result = iterator.next();
-		while (!result.done) {
-			call.call(cb, thisArg, result.value[1], result.value[0], this);
-			result = iterator.next();
+		result = iterator._next();
+		while (result !== undefined) {
+			call.call(cb, thisArg, this.__mapValuesData__[result],
+				this.__mapKeysData__[result], this);
+			result = iterator._next();
 		}
 	}),
 	get: d(function (key) {

@@ -3,12 +3,14 @@
 var clear          = require('es5-ext/object/clear')
   , setPrototypeOf = require('es5-ext/object/set-prototype-of')
   , validValue     = require('es5-ext/object/valid-value')
+  , callable       = require('es5-ext/object/valid-callable')
   , d              = require('d/d')
   , iterator       = require('es6-iterator/valid-iterable')
   , forOf          = require('es6-iterator/for-of')
   , Map            = require('../polyfill')
   , Iterator       = require('./_iterator')
 
+  , call = Function.prototype.call
   , create = Object.create, defineProperties = Object.defineProperties
   , hasOwnProperty = Object.prototype.hasOwnProperty
   , PrimitiveMap;
@@ -65,6 +67,18 @@ PrimitiveMap.prototype = create(Map.prototype, {
 		return true;
 	}),
 	entries: d(function () { return new Iterator(this, 'key+value'); }),
+	forEach: d(function (cb/*, thisArg*/) {
+		var thisArg = arguments[1], iterator, result, sKey;
+		callable(cb);
+		iterator = this.entries();
+		result = iterator._next();
+		while (result !== undefined) {
+			sKey = iterator.__list__[result];
+			call.call(cb, thisArg, this.__mapValuesData__[sKey],
+				this.__mapKeysData__[sKey], this);
+			result = iterator._next();
+		}
+	}),
 	get: d(function (key) {
 		var sKey = this._serialize(key);
 		if (sKey == null) return;
