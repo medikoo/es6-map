@@ -1,12 +1,11 @@
 'use strict';
 
 var setPrototypeOf = require('es5-ext/object/set-prototype-of')
-  , primitiveSet   = require('es5-ext/object/primitive-set')
   , d              = require('d/d')
   , Iterator       = require('es6-iterator')
+  , kinds          = require('./_iterator-kinds')
 
   , defineProperties = Object.defineProperties
-  , kinds = primitiveSet('key', 'value', 'key+value')
   , unBind = Iterator.prototype._unBind
   , MapIterator;
 
