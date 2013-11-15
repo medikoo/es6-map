@@ -1,7 +1,8 @@
 'use strict';
 
-var Map     = require('../../primitive')
-  , toArray = require('es6-iterator/to-array')
+var iteratorSymbol = require('es6-symbol').iterator
+  , toArray        = require('es6-iterator/to-array')
+  , Map            = require('../../primitive')
 
   , compare, mapToResults;
 
@@ -27,7 +28,7 @@ module.exports = function (T) {
 			map = new Map(arr);
 
 			it = new T(map);
-			a(it['@@iterator'](), it, "@@iterator");
+			a(it[iteratorSymbol](), it, "@@iterator");
 			y = it.next();
 			result.push(y);
 			z = it.next();

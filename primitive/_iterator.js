@@ -1,12 +1,13 @@
 'use strict';
 
-var clear          = require('es5-ext/array/#/clear')
-  , assign         = require('es5-ext/object/assign')
-  , setPrototypeOf = require('es5-ext/object/set-prototype-of')
-  , d              = require('d/d')
-  , autoBind       = require('d/auto-bind')
-  , Iterator       = require('es6-iterator')
-  , kinds          = require('../_iterator-kinds')
+var clear             = require('es5-ext/array/#/clear')
+  , assign            = require('es5-ext/object/assign')
+  , setPrototypeOf    = require('es5-ext/object/set-prototype-of')
+  , toStringTagSymbol = require('es6-symbol').toStringTag
+  , d                 = require('d/d')
+  , autoBind          = require('d/auto-bind')
+  , Iterator          = require('es6-iterator')
+  , kinds             = require('../_iterator-kinds')
 
   , defineProperties = Object.defineProperties, keys = Object.keys
   , unBind = Iterator.prototype._unBind
@@ -39,7 +40,6 @@ PrimitiveMapIterator.prototype = Object.create(Iterator.prototype, assign({
 		this.__valuesData__ = null;
 		unBind.call(this);
 	}),
-	'@@toStringTag': d('c', 'Map Iterator'),
 	toString: d(function () { return '[object Map Iterator]'; })
 }, autoBind({
 	_onAdd: d(function (key) { this.__list__.push(key); }),
@@ -53,3 +53,5 @@ PrimitiveMapIterator.prototype = Object.create(Iterator.prototype, assign({
 		this.__nextIndex__ = 0;
 	})
 })));
+Object.defineProperty(PrimitiveMapIterator.prototype, toStringTagSymbol,
+	d('c', 'Map Iterator'));

@@ -6,6 +6,7 @@ var clear          = require('es5-ext/array/#/clear')
   , validValue     = require('es5-ext/object/valid-value')
   , d              = require('d/d')
   , ee             = require('event-emitter/lib/core')
+  , Symbol         = require('es6-symbol')
   , iterator       = require('es6-iterator/valid-iterable')
   , forOf          = require('es6-iterator/for-of')
   , getSetData     = require('es6-set/_get-set-data')
@@ -91,7 +92,9 @@ ee(defineProperties(MapPoly.prototype, {
 	}),
 	size: d.gs(function () { return this.__mapKeysData__.length; }),
 	values: d(function () { return new Iterator(this, 'value'); }),
-	'@@iterator': d(function () { return this.entries(); }),
-	'@@toStringTag': d('c', 'Map'),
 	toString: d(function () { return '[object Map]'; })
 }));
+Object.defineProperty(MapPoly.prototype, Symbol.iterator, d(function () {
+	return this.entries();
+}));
+Object.defineProperty(MapPoly.prototype, Symbol.toStringTag, d('c', 'Map'));

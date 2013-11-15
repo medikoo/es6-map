@@ -26,6 +26,7 @@
     "es5-ext": "git://github.com/medikoo/es5-ext.git",
     "es6-iterator": "git://github.com/medikoo/es6-iterator.git",
     "es6-set": "git://github.com/medikoo/es6-set.git",
+    "es6-symbol": "git://github.com/medikoo/es6-symbol.git",
     "event-emitter": "git://github.com/medikoo/event-emitter.git"
   },
   "devDependencies": {

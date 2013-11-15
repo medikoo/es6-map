@@ -1,9 +1,10 @@
 'use strict';
 
-var setPrototypeOf = require('es5-ext/object/set-prototype-of')
-  , d              = require('d/d')
-  , Iterator       = require('es6-iterator')
-  , kinds          = require('./_iterator-kinds')
+var setPrototypeOf    = require('es5-ext/object/set-prototype-of')
+  , d                 = require('d/d')
+  , Iterator          = require('es6-iterator')
+  , toStringTagSymbol = require('es6-symbol').toStringTag
+  , kinds             = require('./_iterator-kinds')
 
   , defineProperties = Object.defineProperties
   , unBind = Iterator.prototype._unBind
@@ -31,6 +32,7 @@ MapIterator.prototype = Object.create(Iterator.prototype, {
 		this.__values__ = null;
 		unBind.call(this);
 	}),
-	'@@toStringTag': d('c', 'Map Iterator'),
 	toString: d(function () { return '[object Map Iterator]'; })
 });
+Object.defineProperty(MapIterator.prototype, toStringTagSymbol,
+	d('c', 'Map Iterator'));
