@@ -84,10 +84,13 @@ ee(defineProperties(MapPoly.prototype, {
 	}),
 	keys: d(function () { return new Iterator(this, 'key'); }),
 	set: d(function (key, value) {
-		var index = this.__mapKeysData__.eIndexOf(key);
-		if (index === -1) index = this.__mapKeysData__.push(key) - 1;
+		var index = this.__mapKeysData__.eIndexOf(key), emit;
+		if (index === -1) {
+			index = this.__mapKeysData__.push(key) - 1;
+			emit = true;
+		}
 		this.__mapValuesData__[index] = value;
-		this.emit('_add', index, key);
+		if (emit) this.emit('_add', index, key);
 		return this;
 	}),
 	size: d.gs(function () { return this.__mapKeysData__.length; }),
