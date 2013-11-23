@@ -23,7 +23,7 @@ module.exports = MapPoly = function (/*iterable, comparator*/) {
 		throw new TypeError(this + " cannot be reinitialized");
 	}
 	if (iterable != null) iterator(iterable);
-	if (comparator != null) {
+	if (comparator !== undefined) {
 		if (comparator !== 'is') throw new RangeError("Unknown comparator");
 	}
 	defineProperties(this, {
