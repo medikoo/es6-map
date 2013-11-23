@@ -11,17 +11,24 @@ var clear          = require('es5-ext/object/clear')
   , Iterator       = require('./_iterator')
 
   , call = Function.prototype.call
+  , defineProperty = Object.defineProperty
   , create = Object.create, defineProperties = Object.defineProperties
   , hasOwnProperty = Object.prototype.hasOwnProperty
   , PrimitiveMap;
 
-module.exports = PrimitiveMap = function (/*iterable*/) {
-	var iterable = arguments[0];
-	if (!(this instanceof PrimitiveMap)) return new PrimitiveMap(iterable);
+module.exports = PrimitiveMap = function (/*iterable, serialize*/) {
+	var iterable = arguments[0], serialize = arguments[1];
+	if (!(this instanceof PrimitiveMap)) {
+		return new PrimitiveMap(iterable, serialize);
+	}
 	if (this.__mapData__ !== undefined) {
 		throw new TypeError(this + " cannot be reinitialized");
 	}
 	if (iterable != null) iterator(iterable);
+	if (serialize !== undefined) {
+		callable(serialize);
+		defineProperty(this, '_serialize', d('', serialize));
+	}
 	defineProperties(this, {
 		__mapKeysData__: d('', create(null)),
 		__mapValuesData__: d('', create(null)),
