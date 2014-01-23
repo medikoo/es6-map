@@ -27,8 +27,8 @@ module.exports = MapPoly = function (/*iterable, comparator*/) {
 		if (comparator !== 'is') throw new RangeError("Unknown comparator");
 	}
 	defineProperties(this, {
-		__mapKeysData__: d('', keys = getSetData(comparator)),
-		__mapValuesData__: d('', values = [])
+		__mapKeysData__: d('c', keys = getSetData(comparator)),
+		__mapValuesData__: d('c', values = [])
 	});
 	if (!iterable) return;
 	forOf(iterable, function (value) {
