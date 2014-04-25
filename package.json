@@ -1,6 +1,6 @@
 {
   "name": "es6-map",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "ECMAScript6 Map polyfill",
   "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "keywords": [
@@ -22,15 +22,15 @@
     "test": "node ./node_modules/tad/bin/tad"
   },
   "dependencies": {
-    "d": "git://github.com/medikoo/d.git",
-    "es5-ext": "git://github.com/medikoo/es5-ext.git",
+    "d": "~0.1.1",
+    "es5-ext": "~0.10.2",
     "es6-iterator": "git://github.com/medikoo/es6-iterator.git",
     "es6-set": "git://github.com/medikoo/es6-set.git",
     "es6-symbol": "git://github.com/medikoo/es6-symbol.git",
-    "event-emitter": "git://github.com/medikoo/event-emitter.git"
+    "event-emitter": "~0.3.1"
   },
   "devDependencies": {
-    "tad": "~0.1.20"
+    "tad": "~0.1.21"
   },
   "license": "MIT"
 }
