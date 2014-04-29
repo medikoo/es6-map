@@ -21,6 +21,12 @@ If you strictly want to use polyfill even if native `Map` exists, do:
 var Map = require('es6-map/polyfill');
 ```
 
+### Installation
+
+	$ npm install es6-map
+	
+To port it to Browser or any other (non CJS) environment, use your favorite CJS bundler. No favorite yet? Try: [Browserify](http://browserify.org/), [Webmake](https://github.com/medikoo/modules-webmake) or [Webpack](http://webpack.github.io/)
+
 #### API
 
 Best is to refer to [specification](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-map-objects). Still if you want quick look, follow examples:
@@ -63,17 +69,6 @@ iterator.next(); // { done: true, value: undefined }
 map.clear(); // undefined
 map.size; // 0
 ```
-
-### Installation
-#### NPM
-
-In your project path:
-
-	$ npm install es6-map
-
-##### Browser
-
-You can easily bundle _es6-map_ for browser with [modules-webmake](https://github.com/medikoo/modules-webmake)
 
 ## Tests [![Build Status](https://travis-ci.org/medikoo/es6-map.png)](https://travis-ci.org/medikoo/es6-map)
 
