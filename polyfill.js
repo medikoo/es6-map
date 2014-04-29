@@ -10,7 +10,7 @@ var clear          = require('es5-ext/array/#/clear')
   , Symbol         = require('es6-symbol')
   , iterator       = require('es6-iterator/valid-iterable')
   , forOf          = require('es6-iterator/for-of')
-  , Iterator       = require('./_iterator')
+  , Iterator       = require('./lib/iterator')
   , isNative       = require('./is-native-implemented')
 
   , call = Function.prototype.call, defineProperties = Object.defineProperties

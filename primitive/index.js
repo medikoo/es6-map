@@ -8,7 +8,7 @@ var clear          = require('es5-ext/object/clear')
   , iterator       = require('es6-iterator/valid-iterable')
   , forOf          = require('es6-iterator/for-of')
   , Map            = require('../polyfill')
-  , Iterator       = require('./_iterator')
+  , Iterator       = require('../lib/primitive-iterator')
 
   , call = Function.prototype.call
   , defineProperty = Object.defineProperty
