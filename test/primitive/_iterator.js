@@ -1,7 +1,7 @@
 'use strict';
 
 var iteratorSymbol = require('es6-symbol').iterator
-  , toArray        = require('es6-iterator/to-array')
+  , toArray        = require('es5-ext/array/to-array')
   , Map            = require('../../primitive')
 
   , compare, mapToResults;

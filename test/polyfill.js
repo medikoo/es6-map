@@ -1,7 +1,7 @@
 'use strict';
 
 var aFrom   = require('es5-ext/array/from')
-  , toArray = require('es6-iterator/to-array');
+  , toArray = require('es5-ext/array/to-array');
 
 module.exports = function (T, a) {
 	var arr = [['raz', 'one'], ['dwa', 'two'], ['trzy', 'three']]
