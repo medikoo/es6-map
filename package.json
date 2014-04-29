@@ -1,6 +1,6 @@
 {
   "name": "es6-map",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "ECMAScript6 Map polyfill",
   "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "keywords": [
