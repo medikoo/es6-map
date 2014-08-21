@@ -41,7 +41,7 @@ module.exports = function (T) {
 			a.deep(y = it.next(), { done: true, value: undefined }, "End");
 			a.not(y, it.next(), "Recreate result on dead");
 		},
-		"Emited": function (a) {
+		Emited: function (a) {
 			var arr, it, map, result = [];
 
 			arr = [['raz', 'one'], ['dwa', 'two'], ['trzy', 'three'],
@@ -115,7 +115,7 @@ module.exports = function (T) {
 			a.deep(result.sort(compare), mapToResults(arr));
 			a.deep(it.next(), { done: true, value: undefined }, "End");
 		},
-		"Kinds": function (a) {
+		Kinds: function (a) {
 			var arr = [['raz', 'one'], ['dwa', 'two']], map = new Map(arr);
 
 			a.deep(toArray(new T(map)).sort(), arr.sort(), "Default");
