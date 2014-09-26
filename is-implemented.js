@@ -22,7 +22,7 @@ module.exports = function () {
 
 	iterator = map.entries();
 	result = iterator.next();
-	if (result.done !== true) return false;
+	if (result.done !== false) return false;
 	if (!result.value) return false;
 	if (result.value[0] !== 'raz') return false;
 	if (result.value[1] !== 'one') return false;
