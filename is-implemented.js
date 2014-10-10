@@ -1,7 +1,11 @@
 'use strict';
 
+var d = require('d')
+
+  , create = Object.create, setPrototypeOf = Object.setPrototypeOf;
+
 module.exports = function () {
-	var map, iterator, result;
+	var map, iterator, result, SubMap;
 	if (typeof Map !== 'function') return false;
 	if (String(Map.prototype) !== '[object Map]') return false;
 	try {
@@ -27,5 +31,22 @@ module.exports = function () {
 	if (!result.value) return false;
 	if (result.value[0] !== 'raz') return false;
 	if (result.value[1] !== 'one') return false;
+
+	// Non new call
+	try { map = Map([[1, 2], [2, 3], [3, 4]]); } catch (e) { return false; } //jslint: ignore
+
+	if (!map) return false;
+	if (map.size !== 3) return false;
+
+	// Extendable
+	if (setPrototypeOf) {
+		SubMap = function () { Map.apply(this, arguments); };
+		setPrototypeOf(SubMap, Map);
+		SubMap.prototype = create(Map.prototype, { constructor: d(SubMap) });
+		try { map = new SubMap([[1, 2], [2, 3], [3, 4]]); } catch (e) { return false; }
+		try {
+			if (map.size !== 3) return false;
+		} catch (e) { return false; }
+	}
 	return true;
 };
