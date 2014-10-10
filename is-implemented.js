@@ -3,6 +3,7 @@
 module.exports = function () {
 	var map, iterator, result;
 	if (typeof Map !== 'function') return false;
+	if (String(Map.prototype) !== '[object Map]') return false;
 	try {
 		// WebKit doesn't support arguments and crashes
 		map = new Map([['raz', 'one'], ['dwa', 'two'], ['trzy', 'three']]);
