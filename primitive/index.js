@@ -18,9 +18,7 @@ var clear          = require('es5-ext/object/clear')
 
 module.exports = PrimitiveMap = function (/*iterable, serialize*/) {
 	var iterable = arguments[0], serialize = arguments[1];
-	if (!(this instanceof PrimitiveMap)) {
-		return new PrimitiveMap(iterable, serialize);
-	}
+	if (!(this instanceof PrimitiveMap)) throw new TypeError('Constructor requires \'new\'');
 	if (this.__mapData__ !== undefined) {
 		throw new TypeError(this + " cannot be reinitialized");
 	}

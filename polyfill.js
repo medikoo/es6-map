@@ -18,7 +18,7 @@ var clear          = require('es5-ext/array/#/clear')
 
 module.exports = MapPoly = function (/*iterable*/) {
 	var iterable = arguments[0], keys, values;
-	if (!(this instanceof MapPoly)) return new MapPoly(iterable);
+	if (!(this instanceof MapPoly)) throw new TypeError('Constructor requires \'new\'');
 	if (this.__mapKeysData__ !== undefined) {
 		throw new TypeError(this + " cannot be reinitialized");
 	}
