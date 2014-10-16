@@ -32,9 +32,6 @@ module.exports = function () {
 	if (result.value[0] !== 'raz') return false;
 	if (result.value[1] !== 'one') return false;
 
-	// Non new call
-	try { map = Map([[1, 2], [2, 3], [3, 4]]); } catch (e) { return false; } //jslint: ignore
-
 	if (!map) return false;
 	if (map.size !== 3) return false;
 
