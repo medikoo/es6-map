@@ -13,17 +13,17 @@ var clear          = require('es5-ext/array/#/clear')
   , Iterator       = require('./lib/iterator')
   , isNative       = require('./is-native-implemented')
 
-  , call = Function.prototype.call, defineProperties = Object.defineProperties
+  , call = Function.prototype.call
+  , defineProperties = Object.defineProperties, getPrototypeOf = Object.getPrototypeOf
   , MapPoly;
 
 module.exports = MapPoly = function (/*iterable*/) {
-	var iterable = arguments[0], keys, values;
+	var iterable = arguments[0], keys, values, self;
 	if (!(this instanceof MapPoly)) throw new TypeError('Constructor requires \'new\'');
-	if (this.__mapKeysData__ !== undefined) {
-		throw new TypeError(this + " cannot be reinitialized");
-	}
+	if (isNative && setPrototypeOf) self = setPrototypeOf(new Set(), getPrototypeOf(this));
+	else self = this;
 	if (iterable != null) iterator(iterable);
-	defineProperties(this, {
+	defineProperties(self, {
 		__mapKeysData__: d('c', keys = []),
 		__mapValuesData__: d('c', values = [])
 	});
@@ -34,7 +34,8 @@ module.exports = MapPoly = function (/*iterable*/) {
 		if (eIndexOf.call(keys, key) !== -1) return;
 		keys.push(key);
 		values.push(value);
-	}, this);
+	}, self);
+	return self;
 };
 
 if (isNative) {

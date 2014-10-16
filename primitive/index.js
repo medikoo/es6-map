@@ -7,44 +7,45 @@ var clear          = require('es5-ext/object/clear')
   , d              = require('d')
   , iterator       = require('es6-iterator/valid-iterable')
   , forOf          = require('es6-iterator/for-of')
+  , isNative       = require('../is-native-implemented')
   , Map            = require('../polyfill')
   , Iterator       = require('../lib/primitive-iterator')
 
   , call = Function.prototype.call
-  , defineProperty = Object.defineProperty
-  , create = Object.create, defineProperties = Object.defineProperties
+  , create = Object.create, defineProperty = Object.defineProperty
+  , defineProperties = Object.defineProperties, getPrototypeOf = Object.getPrototypeOf
   , hasOwnProperty = Object.prototype.hasOwnProperty
   , PrimitiveMap;
 
 module.exports = PrimitiveMap = function (/*iterable, serialize*/) {
-	var iterable = arguments[0], serialize = arguments[1];
+	var iterable = arguments[0], serialize = arguments[1], self;
 	if (!(this instanceof PrimitiveMap)) throw new TypeError('Constructor requires \'new\'');
-	if (this.__mapData__ !== undefined) {
-		throw new TypeError(this + " cannot be reinitialized");
-	}
+	if (isNative && setPrototypeOf) self = setPrototypeOf(new Set(), getPrototypeOf(this));
+	else self = this;
 	if (iterable != null) iterator(iterable);
 	if (serialize !== undefined) {
 		callable(serialize);
-		defineProperty(this, '_serialize', d('', serialize));
+		defineProperty(self, '_serialize', d('', serialize));
 	}
-	defineProperties(this, {
+	defineProperties(self, {
 		__mapKeysData__: d('c', create(null)),
 		__mapValuesData__: d('c', create(null)),
 		__size__: d('w', 0)
 	});
 	if (!iterable) return;
 	forOf(iterable, function (value) {
-		var key = validValue(value)[0], sKey = this._serialize(key);
+		var key = validValue(value)[0], sKey = self._serialize(key);
 		if (sKey == null) throw new TypeError(key + " cannot be serialized");
 		value = value[1];
-		if (hasOwnProperty.call(this.__mapKeysData__, sKey)) {
-			if (this.__mapValuesData__[sKey] === value) return;
+		if (hasOwnProperty.call(self.__mapKeysData__, sKey)) {
+			if (self.__mapValuesData__[sKey] === value) return;
 		} else {
-			++this.__size__;
+			++self.__size__;
 		}
-		this.__mapKeysData__[sKey] = key;
-		this.__mapValuesData__[sKey] = value;
-	}, this);
+		self.__mapKeysData__[sKey] = key;
+		self.__mapValuesData__[sKey] = value;
+	});
+	return self;
 };
 if (setPrototypeOf) setPrototypeOf(PrimitiveMap, Map);
 
