@@ -20,7 +20,7 @@ var clear          = require('es5-ext/object/clear')
 module.exports = PrimitiveMap = function (/*iterable, serialize*/) {
 	var iterable = arguments[0], serialize = arguments[1], self;
 	if (!(this instanceof PrimitiveMap)) throw new TypeError('Constructor requires \'new\'');
-	if (isNative && setPrototypeOf) self = setPrototypeOf(new Set(), getPrototypeOf(this));
+	if (isNative && setPrototypeOf) self = setPrototypeOf(new Map(), getPrototypeOf(this));
 	else self = this;
 	if (iterable != null) iterator(iterable);
 	if (serialize !== undefined) {
