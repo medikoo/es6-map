@@ -32,7 +32,7 @@ module.exports = PrimitiveMap = function (/*iterable, serialize*/) {
 		__mapValuesData__: d('c', create(null)),
 		__size__: d('w', 0)
 	});
-	if (!iterable) return;
+	if (!iterable) return self;
 	forOf(iterable, function (value) {
 		var key = validValue(value)[0], sKey = self._serialize(key);
 		if (sKey == null) throw new TypeError(key + " cannot be serialized");

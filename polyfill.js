@@ -27,7 +27,7 @@ module.exports = MapPoly = function (/*iterable*/) {
 		__mapKeysData__: d('c', keys = []),
 		__mapValuesData__: d('c', values = [])
 	});
-	if (!iterable) return;
+	if (!iterable) return self;
 	forOf(iterable, function (value) {
 		var key = validValue(value)[0];
 		value = value[1];
