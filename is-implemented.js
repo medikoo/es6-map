@@ -28,8 +28,5 @@ module.exports = function () {
 	if (result.value[0] !== 'raz') return false;
 	if (result.value[1] !== 'one') return false;
 
-	if (!map) return false;
-	if (map.size !== 3) return false;
-
 	return true;
 };
