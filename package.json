@@ -12,6 +12,7 @@
     "hash",
     "map",
     "polyfill",
+    "ponyfill",
     "ecmascript"
   ],
   "repository": {
