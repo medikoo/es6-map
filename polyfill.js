@@ -20,8 +20,11 @@ var clear          = require('es5-ext/array/#/clear')
 module.exports = MapPoly = function (/*iterable*/) {
 	var iterable = arguments[0], keys, values, self;
 	if (!(this instanceof MapPoly)) throw new TypeError('Constructor requires \'new\'');
-	if (isNative && setPrototypeOf) self = setPrototypeOf(new Map(), getPrototypeOf(this));
-	else self = this;
+	if (isNative && setPrototypeOf && (Map !== MapPoly)) {
+		self = setPrototypeOf(new Map(), getPrototypeOf(this));
+	} else {
+		self = this;
+	}
 	if (iterable != null) iterator(iterable);
 	defineProperties(self, {
 		__mapKeysData__: d('c', keys = []),
