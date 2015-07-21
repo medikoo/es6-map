@@ -8,7 +8,7 @@ var clear          = require('es5-ext/object/clear')
   , iterator       = require('es6-iterator/valid-iterable')
   , forOf          = require('es6-iterator/for-of')
   , isNative       = require('../is-native-implemented')
-  , Map            = require('../polyfill')
+  , MapPolyfill    = require('../polyfill')
   , Iterator       = require('../lib/primitive-iterator')
 
   , call = Function.prototype.call
@@ -47,9 +47,9 @@ module.exports = PrimitiveMap = function (/*iterable, serialize*/) {
 	});
 	return self;
 };
-if (setPrototypeOf) setPrototypeOf(PrimitiveMap, Map);
+if (setPrototypeOf) setPrototypeOf(PrimitiveMap, MapPolyfill);
 
-PrimitiveMap.prototype = create(Map.prototype, {
+PrimitiveMap.prototype = create(MapPolyfill.prototype, {
 	constructor: d(PrimitiveMap),
 	_serialize: d(function (value) {
 		if (value && (typeof value.toString !== 'function')) return null;
