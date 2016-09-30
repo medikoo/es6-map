@@ -3,7 +3,7 @@
 
 ### Usage
 
-It’s safest to use *es6-map* as a [ponyfill](http://kikobeats.com/polyfill-ponyfill-and-prollyfill/) – a polyfill which doesn’t touch global objects:
+It’s safest to use *es6-map* as a [ponyfill](https://ponyfill.com) – a polyfill which doesn’t touch global objects:
 
 ```javascript
 var Map = require('es6-map');
