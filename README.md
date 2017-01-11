@@ -1,6 +1,9 @@
 # es6-map
 ## Map collection as specified in ECMAScript6
 
+__Warning: v0.1 version does not ensure O(1) algorithm complexity (but O(n)). This shortcoming will be addressed in v1.0__
+
+
 ### Usage
 
 It’s safest to use *es6-map* as a [ponyfill](https://ponyfill.com) – a polyfill which doesn’t touch global objects:
