@@ -28,7 +28,7 @@
     "event-emitter": "^0.3.5"
   },
   "devDependencies": {
-    "tad": "^0.2.8",
+    "tad": "^2.0.1",
     "xlint": "^0.2.2",
     "xlint-jslint-medikoo": "^0.1.4"
   },
