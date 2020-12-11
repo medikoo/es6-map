@@ -5,6 +5,16 @@ node_js:
   - 4
   - 6
   - 7
+  - 14
+
+arch:
+  - amd64
+  - ppc64le
+  
+jobs:
+  exclude:
+    - arch: ppc64le
+      node_js: "0.12"
 
 notifications:
   email:
